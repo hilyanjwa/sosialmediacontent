@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Viral Content Predictor</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #3b82f6, #6366f1);
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 520px;
+    margin: 40px auto;
+}
+
+/* Card */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form */
+.grup {
+    margin-bottom: 12px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+/* Result */
+.hasil {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.viral {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.tidak {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Error */
+.error {
+    margin-top: 10px;
+    color: red;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<div class="card">
+
+<h2>🚀 Prediksi Konten Viral</h2>
+
+<form method="POST">
+
+<div class="grup">
+<label>Platform</label>
+<select name="platform">
+<option>Instagram</option>
+<option>TikTok</option>
+<option>X</option>
+<option>YouTube Shorts</option>
+</select>
+</div>
+
+<div class="grup">
+<label>Content Type</label>
+<select name="content_type">
+<option>text</option>
+<option>image</option>
+<option>video</option>
+<option>carousel</option>
+</select>
+</div>
+
+<div class="grup">
+<label>Topic</label>
+<select name="topic">
+<option>Education</option>
+<option>Entertainment</option>
+<option>Lifestyle</option>
+<option>Politics</option>
+<option>Sports</option>
+<option>Technology</option>
+</select>
+</div>
+
+<div class="grup">
+<label>Language</label>
+<select name="language">
+<option>en</option>
+<option>es</option>
+<option>fr</option>
+<option>hi</option>
+<option>ur</option>
+</select>
+</div>
+
+<div class="grup">
+<label>Region</label>
+<select name="region">
+<option>Brazil</option>
+<option>India</option>
+<option>Pakistan</option>
+<option>UK</option>
+<option>US</option>
+</select>
+</div>
+
+<div class="grup">
+<label>Comments</label>
+<input type="number" name="comments" required>
+</div>
+
+<div class="grup">
+<label>Shares</label>
+<input type="number" name="shares" required>
+</div>
+
+<div class="grup">
+<label>Sentiment Score</label>
+<input type="number" step="0.01" name="sentiment_score" required>
+</div>
+
+<div class="grup">
+<label>Post Day</label>
+<input type="number" name="post_day" required>
+</div>
+
+<div class="grup">
+<label>Post Month</label>
+<input type="number" name="post_month" required>
+</div>
+
+<div class="grup">
+<label>Post Weekday</label>
+<input type="number" name="post_weekday" required>
+</div>
+
+<div class="grup">
+<label>Jumlah Hashtag</label>
+<input type="number" name="hashtags_count" required>
+</div>
+
+<button type="submit">Prediksi</button>
+</form>
+
+{% if prediction %}
+<div class="hasil {% if prediction == 'Viral' %}viral{% else %}tidak{% endif %}">
+Hasil: {{ prediction }} <br>
+Confidence: {{ confidence }}%
+</div>
+{% endif %}
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+</div>
+</div>
+
+</body>
+</html>
